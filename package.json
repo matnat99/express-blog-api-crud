@@ -1,0 +1,23 @@
+{
+  "name": "express-blog-intro",
+  "version": "1.0.0",
+  "description": "Express blog ex",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "watch": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matnat99/express-blog-intro.git"
+  },
+  "author": "Mattia Natale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matnat99/express-blog-intro/issues"
+  },
+  "homepage": "https://github.com/matnat99/express-blog-intro#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
