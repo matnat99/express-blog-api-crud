@@ -8,21 +8,21 @@ const router = express.Router();
 router.use("/:id", postValidationId);
 
 // Index
-router.get('/', postController.index)
-  
+router.get("/", postController.index);
+
 // Show
-router.get('/:id', postController.show)
+router.get("/:id", postController.show);
 
 // Store
-router.post('/', postController.store)
+router.post("/", postController.store);
 
 // Update
-router.put('/:id', postController.update)
+router.put("/:id", postController.update);
 
 // Modify
-router.patch('/:id', postController.modify)
+router.patch("/:id", postController.modify);
 
 // Destroy
-router.delete('/:id', postController.destroy)
+router.delete("/:id", postController.destroy);
 
-module.exports = router
+module.exports = router;
