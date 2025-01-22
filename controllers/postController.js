@@ -35,7 +35,21 @@ const modify = (req, res) =>{
 
 // Destroy
 const destroy = (req, res) =>{
-    res.send('Eliminazione del post' + req.params.id);
-  }
+
+    const post = posts.find((postElm) => postElm.id == req.params.id)
+    
+    // Guard Condition
+    if(!post){
+        return res.status(404).json({
+            error: "Post not found"
+        })
+    }
+
+    posts.splice(posts.indexOf(post), 1);
+
+    console.log(posts);
+    
+    res.sendStatus(204);
+}
 
 module.exports = {index, show, store, update, modify, destroy};
