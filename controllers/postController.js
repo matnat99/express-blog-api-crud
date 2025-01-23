@@ -45,7 +45,20 @@ const store = (req, res) => {
 
 // Update
 const update = (req, res) => {
-  res.send("Modifica integrale del post" + req.params.id);
+  const { id } = req.params;
+
+  const post = posts.find((postElm) => postElm.id == req.params.id);
+
+  // Guard Condition
+  if (!post) {
+    return res.sendStatus(404);
+  }
+
+  post.title = req.body.title;
+  post.image = req.body.image;
+  post.tags = req.body.tags;
+
+  res.json(post);
 };
 
 // Modify
