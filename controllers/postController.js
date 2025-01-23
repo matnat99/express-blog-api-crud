@@ -19,11 +19,6 @@ const show = (req, res) => {
 
   const post = posts.find((postElm) => postElm.id == req.params.id);
 
-  // Guard Condition
-  if (!post) {
-    return res.sendStatus(404);
-  }
-
   res.json(post);
 };
 
@@ -49,11 +44,6 @@ const update = (req, res) => {
 
   const post = posts.find((postElm) => postElm.id == req.params.id);
 
-  // Guard Condition
-  if (!post) {
-    return res.sendStatus(404);
-  }
-
   post.title = req.body.title;
   post.image = req.body.image;
   post.tags = req.body.tags;
@@ -66,11 +56,6 @@ const modify = (req, res) => {
   const { id } = req.params;
 
   const post = posts.find((postElm) => postElm.id == req.params.id);
-
-  // Guard Condition
-  if (!post) {
-    return res.sendStatus(404);
-  }
 
   if (req.body.title) {
     post.title = req.body.title;
@@ -93,13 +78,6 @@ const destroy = (req, res) => {
   const { id } = req.params;
 
   const post = posts.find((postElm) => postElm.id == req.params.id);
-
-  // Guard Condition
-  if (!post) {
-    return res.status(404).json({
-      error: "Post not found",
-    });
-  }
 
   posts.splice(posts.indexOf(post), 1);
 
