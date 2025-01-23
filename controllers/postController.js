@@ -63,7 +63,29 @@ const update = (req, res) => {
 
 // Modify
 const modify = (req, res) => {
-  res.send("Modifica parziale del post" + req.params.id);
+  const { id } = req.params;
+
+  const post = posts.find((postElm) => postElm.id == req.params.id);
+
+  // Guard Condition
+  if (!post) {
+    return res.sendStatus(404);
+  }
+
+  if (req.body.title) {
+    post.title = req.body.title;
+  }
+  if (req.body.image) {
+    post.image = req.body.image;
+  }
+  if (req.body.tags) {
+    post.tags = req.body.tags;
+  } /*= post = {
+       ...post,
+       ...req.body,
+      } con post dichiarato con una let*/
+
+  res.json(post);
 };
 
 // Destroy
