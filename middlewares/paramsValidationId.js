@@ -1,8 +1,10 @@
-const middlewareValidationId = (req, res, next) =>{
-    if(isNaN(req.params.id)){
-      return res.sendStatus(400)
-   }
-   next()
+const middlewareValidationId = (req, res, next) => {
+  req.params.id = Number(req.params.id);
+
+  if (isNaN(req.params.id)) {
+    return res.sendStatus(400);
   }
-  
-  module.exports = middlewareValidationId;
+  next();
+};
+
+module.exports = middlewareValidationId;

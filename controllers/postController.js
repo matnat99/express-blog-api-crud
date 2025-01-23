@@ -15,6 +15,8 @@ const index = (req, res) => {
 
 // Show
 const show = (req, res) => {
+  const { id } = req.params;
+
   const post = posts.find((postElm) => postElm.id == req.params.id);
 
   // Guard Condition
@@ -27,7 +29,18 @@ const show = (req, res) => {
 
 // Store
 const store = (req, res) => {
-  res.send("Creazione nuovo post");
+  const newId = posts[posts.length - 1].id + 1;
+
+  const newPost = {
+    id: newId,
+    ...req.body /* = title: req.body.title,
+                   = image: req.body.image,
+                   = tags: req.body.tags,*/,
+  };
+
+  posts.push(newPost);
+
+  res.sendStatus(201);
 };
 
 // Update
@@ -42,6 +55,8 @@ const modify = (req, res) => {
 
 // Destroy
 const destroy = (req, res) => {
+  const { id } = req.params;
+
   const post = posts.find((postElm) => postElm.id == req.params.id);
 
   // Guard Condition
@@ -58,4 +73,11 @@ const destroy = (req, res) => {
   res.sendStatus(204);
 };
 
-module.exports = { index, show, store, update, modify, destroy };
+module.exports = {
+  index,
+  show,
+  store,
+  update,
+  modify,
+  destroy,
+};
